@@ -59,7 +59,7 @@ function App() {
     setFullGrid(() => true);
     for (const box in boxes) {
       if (boxes[box] === null) {
-        setFullGrid(() => false);
+      ///  setFullGrid(() => false);
       }
     }
     console.log("fullGrid " + fullGrid);

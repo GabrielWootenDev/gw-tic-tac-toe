@@ -52,6 +52,7 @@ function App() {
   }
 
   useEffect(() => {
+    debugger;
     setGame(() => gameState);
     for (const row in gameState) {
       (gameState[row].every((box) => box === nextPlayer)) && setGameWinner(() => nextPlayer);

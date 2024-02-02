@@ -53,8 +53,15 @@ function App() {
 
   useEffect(() => {
     setGame(() => gameState);
+    let isWinner = false;
     for (const row in gameState) {
-      (gameState[row].every((box) => box === nextPlayer)) && setGameWinner(() => nextPlayer);
+      if (gameState[row].every((box) => box === nextPlayer)) {
+        setGameWinner(() => nextPlayer); 
+        isWinner = true;
+      }
+    }
+    if (!isWinner) {
+      setGameWinner(() => null);
     }
     setFullGrid(() => true);
     for (const box in boxes) {
@@ -73,7 +80,6 @@ function App() {
 
   const resetGame = () => {
     setBoxes(() => startingBoxes);
-    setGameWinner(() => null);
     setTurnPlayer(() => startPlayer);
     setTie(() => false);
   }

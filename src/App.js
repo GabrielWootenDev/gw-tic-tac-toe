@@ -67,9 +67,9 @@ function App() {
 
   useEffect(() => {
     if (gameWinner === null && fullGrid === true) {
-      setTie(() => true);
+      setGameWinner(() => "Tie");
     }
-  }, [fullGrid, tie])
+  }, [fullGrid, gameWinner])
 
   const resetGame = () => {
     setBoxes(() => startingBoxes);
@@ -85,7 +85,7 @@ function App() {
         <div>
           <div>
             {(gameWinner === "Tie") && <h3 className="status">Tie</h3>}
-            {(gameWinner !== null) && <h3 className="status">Winner: {gameWinner}</h3>}
+            {(gameWinner !== null) && (gameWinner !== "Tie") && <h3 className="status">Winner: {gameWinner}</h3>}
             {(gameWinner === null) && <h3 className="status">Next player: {turnPlayer}</h3>}
           </div>
           <button className="reset" onClick={() => resetGame()}>{(gameWinner) ? "New Game?" : "Reset"}</button>
